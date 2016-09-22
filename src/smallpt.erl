@@ -89,7 +89,7 @@ main() ->
 get_samples([_|[Head|_]]) ->
 	Head / 4;
 get_samples(_) ->
-	4.
+	1.
 
 get_camera(Width, Height) ->
 	Eye = [50.0, 52.0, 295.6],
