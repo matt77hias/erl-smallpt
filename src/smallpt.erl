@@ -124,7 +124,7 @@ loop_sx(Scene, Camera, Y, Height, X, Width, Sy, Sx, 2, Smax, Ls0) ->
 	L0 = loop_s(Scene, Camera, Y, Height, X, Width, Sy, Sx, 0, Smax, [0.0, 0.0, 0.0]),
 	L1 = vector3:mul_v3(vector3:clamp_v3(L0, 0.0, 1.0), 0.25),
 	Index = (Height - 1 - Y) * Width + X,
-	Ls1 = array:set(Index, L1, Ls0),
+	Ls1 = array:set(Index, vector3:add_v3(array:get(Index, Ls0), L1), Ls0),
 	loop_sx(Scene, Camera, Y, Height, X, Width, Sy, Sx + 1, 2, Smax, Ls1).
 loop_s(_Scene, _Camera, _Y, _Height, _X, _Width, _Sy, _Sx, Smax, Smax, L) ->
 	L;
